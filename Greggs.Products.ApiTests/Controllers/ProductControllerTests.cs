@@ -35,7 +35,7 @@ namespace Greggs.Products.Api.Controllers.Tests
         public void GetOtherCurrencyPriceTest()
         {
             var euroExchange = 1.1m;
-            var latest = _productController.Get(euroExchange);
+            var latest = _productController.GetOtherCurrency(euroExchange);
             var colaInPounds = latest.First(x => x.Name == "Coca Cola").PriceInPounds;
             var expected = colaInPounds / euroExchange;
             Assert.IsTrue(latest.First(x => x.Name == "Coca Cola").OtherCurrencyPrice == expected);

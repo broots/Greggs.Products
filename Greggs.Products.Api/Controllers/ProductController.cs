@@ -33,7 +33,8 @@ namespace Greggs.Products.Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Product> Get(decimal exchangeRate)
+        [Route("~/product/GetOtherCurrency/{exchangeRate:decimal}")]
+        public IEnumerable<Product> GetOtherCurrency(decimal exchangeRate)
         {
             var products = _productDataAccess.List(null, null);
             products.ToList().ForEach(x => x.ExchangeRate = exchangeRate);
